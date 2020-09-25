@@ -1,6 +1,7 @@
 import numpy as np
 import data_loader.data_helper as helper
 import utils.config
+import torch
 
 
 class DataGenerator:
@@ -31,6 +32,7 @@ class DataGenerator:
         self.val_graphs = [np.expand_dims(g, 0) for g in self.val_graphs]
         self.train_size = len(self.train_graphs)
         self.val_size = len(self.val_graphs)
+
 
     def next_batch(self):
         return next(self.iter)

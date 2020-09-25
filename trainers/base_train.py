@@ -1,8 +1,9 @@
-import tensorflow as tf
+# import tensorflow as tf
 
 
 class BaseTrain:
-    def __init__(self, sess, model, config, data_loader=None, logger=None):
+#     def __init__(self, sess, model, config, data_loader=None, logger=None):
+    def __init__(self, model, config, data_loader=None, logger=None):
         """
         Constructing the trainer
         :param sess: TF.Session() instance
@@ -16,13 +17,13 @@ class BaseTrain:
         if logger is not None:
             self.logger = logger
         self.config = config
-        self.sess = sess
+#         self.sess = sess
         if data_loader is not None:
             self.data_loader = data_loader
 
         # Initialize all variables of the graph
-        self.init = tf.global_variables_initializer()
-        self.sess.run(self.init)
+#         self.init = tf.global_variables_initializer()
+#         self.sess.run(self.init)
 
     def train(self):
         """
@@ -32,7 +33,7 @@ class BaseTrain:
         """
         for cur_epoch in range(self.model.cur_epoch_tensor.eval(self.sess), self.config.num_epochs + 1, 1):
             self.train_epoch()
-            self.sess.run(self.model.increment_cur_epoch_tensor)
+#             self.sess.run(self.model.increment_cur_epoch_tensor)
 
     def train_epoch(self, epoch=None):
         """

@@ -2,6 +2,7 @@ import json
 from easydict import EasyDict
 import os
 import datetime
+import torch
 
 NUM_LABELS = {'COLLAB':0, 'IMDBBINARY':0, 'IMDBMULTI':0, 'MUTAG':7, 'NCI1':37, 'NCI109':38, 'PROTEINS':3, 'PTC':22, 'DD':89}
 NUM_CLASSES = {'COLLAB':3, 'IMDBBINARY':2, 'IMDBMULTI':3, 'MUTAG':2, 'NCI1':2, 'NCI109':2, 'PROTEINS':2, 'PTC':2}
@@ -41,6 +42,12 @@ def process_config(json_file):
     config.n_gpus = len(config.gpu.split(','))
     config.gpus_list = ",".join(['{}'.format(i) for i in range(config.n_gpus)])
     config.devices = ['/gpu:{}'.format(i) for i in range(config.n_gpus)]
+    if torch.cuda.is_available():
+        config.cuda = True
+        config.device = 'cuda'
+    else:
+        config.cuda = False
+        config.device = 'cpu'
     return config
 
 if __name__ == '__main__':
