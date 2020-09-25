@@ -1,3 +1,10 @@
+# Invariant and  Equivariant Graph Networks in PyTorch
+This is a re-implementation of Invariant and  Equivariant Graph Networks in Pytorch.
+
+Note: not all code re-implementation has been finished. 
+- Only eq 2 to 2 had been moved to torch
+- Saving and loading of the model hasn't been moved to torch / has been temporarily removed.
+
 # Invariant and  Equivariant Graph Networks
 A TensorFlow implementation of The ICLR 2019 paper "Invariant and  Equivariant Graph Networks" by Haggai Maron, Heli Ben-Hamu, Nadav Shamir and Yaron Lipman
 https://openreview.net/forum?id=Syx72jC9tm
